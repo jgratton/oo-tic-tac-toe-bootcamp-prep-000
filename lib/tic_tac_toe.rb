@@ -35,24 +35,24 @@ class TicTacToe
     @board[index] = current_player
   end
 
-  def position_taken?(location)
-    if @board[location] != " " && @board[location] != ""
+  def position_taken?(board, location)
+    @board[location] != " " && @board[location] != ""
   end
 
-  def valid_move?(index)
-    index.between?(0,8) && !position_taken?(@board, index)
+  def valid_move?(board, index)
+    index.between?(0,8) && !position_taken?(board, index)
   end
 
-  def turn
+  def turn(board)
     puts "Please enter 1-9:"
     input = gets.strip
     index = input_to_index(input)
-    if valid_move?(index)
-      current_player = current_player
-      move(index, current_player)
-      display_board
+    if valid_move?(board, index)
+      current_player = current_player(board)
+      move(board, index, current_player)
+      display_board(board)
     else
-      turn
+      turn(board)
     end
   end
 
