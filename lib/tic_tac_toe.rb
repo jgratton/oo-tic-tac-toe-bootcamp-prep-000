@@ -29,7 +29,6 @@ class TicTacToe
 
   def move(index, current_player = "X")
     @board[index] = current_player
-    return @board
   end
 
 def position_taken?(board, location)
